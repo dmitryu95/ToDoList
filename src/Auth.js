@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, TextInput, TouchableOpacity, ImageBackground } from 'react-native';
+import { View, Text, StyleSheet, TextInput, TouchableOpacity, ImageBackground, Button } from 'react-native';
 
 export default function Auth({ navigation }) {
     const openNotes = () => { navigation.navigate('Notes') }
     const openRegistration = () => { navigation.navigate('Registration') }
+    const openApi = () => { navigation.navigate('ApiRequest') }
 
     const [login, setLogin] = useState([]);
     const getLogin = (value) => {
@@ -46,6 +47,7 @@ export default function Auth({ navigation }) {
                         <Text style={{fontSize: 20}}>Регистрация</Text> 
                     </TouchableOpacity>
                 </View>
+                <Button style={styles.buttonEnter} title="Получение JSON" onPress={() => openApi()} />
             </View>
         </View>
     )

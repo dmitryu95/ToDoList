@@ -39,11 +39,9 @@ const TodoList = () => {
                     <TouchableOpacity style={styles.list}>
                         <Text>{item.title}</Text>
                     </TouchableOpacity>
-        
                     <TouchableOpacity style={styles.buttonEdit}>
                         <Text>Edit</Text>    
                     </TouchableOpacity>
-        
                     <TouchableOpacity onPress={() => deleteNote(item.key)} style={styles.buttonDel}>
                         <Text style={styles.del}>X</Text>
                     </TouchableOpacity>
