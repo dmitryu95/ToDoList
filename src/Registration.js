@@ -5,42 +5,45 @@ export default function Registration({ navigation }) {
     const openScreen = () => { navigation.navigate('Notes') }
 
     const [login, setLogin] = useState([]);
-    const getLogin = (value) => {
-        setLogin(value);
-    }
-
     const [password, setPassword] = useState('');
-    const getPass = (value) => {
-        setPassword(value);
-    }
+    const [name, setName] = useState('');
+    const [userName, setUserName] = useState('');
 
     const ButtonAccept = () => {
-         return (
-            <TouchableOpacity style={styles.button} >  
-                <Text style={{fontSize: 18}}>Принять</Text>   
-            </TouchableOpacity>
-        )    
+        setLogin('')
+        setPassword('')  
+        setName('')
+        setUserName('')
+    }
+
+    const FormRegistration = (props) => {
+        return(
+            <View style={styles.loginPass}>
+                <Text style={styles.text}>{props.title}</Text>
+                <TextInput style={styles.input} 
+                    value={props.stateText}
+                    onChangeText={props.stateText} 
+                    placeholder={props.holder}></TextInput>
+            </View>
+        )
     }
 
     return (
         <View style={styles.main}>
         <Text style={styles.auth}>Регистрация</Text>
-            <View>
-                <View style={styles.loginPass}>
-                    <Text style={styles.text}>Придумайте логин:</Text>
-                    <TextInput style={styles.input} onChangeText={getLogin} placeholder='Введите логин...'></TextInput>
-                </View>
-                <View style={styles.loginPass}>
-                    <Text style={styles.text}>Придумайте пароль:</Text>
-                    <TextInput style={styles.input} onChangeText={getPass} placeholder='Введите пароль...'></TextInput>                        
-                    <ButtonAccept />
-                </View>
-                <View style={styles.buttonEnter} >
-                    <TouchableOpacity  onPress={() => openScreen()}>
-                        <Text style={{fontSize: 20}}>Зарегистрироваться</Text> 
-                    </TouchableOpacity>
-                </View>
-            </View>
+            <FormRegistration title={"Введите Email"} stateText={() => setLogin()} holder={'Введите логин...'}  />
+            <FormRegistration title={"Введите Пароль"} stateText={() => setPassword()} holder={'Введите пароль...'}  />
+            <FormRegistration title={"Введите ваше Имя"} stateText={() => setName()} holder={'Введите ваше имя...'}  />
+            <FormRegistration title={"Введите ваш Никнейм"} stateText={() => setUserName()} holder={'Введите ваш никнейм...'}  />
+            <TouchableOpacity 
+                style={styles.button}
+                onPress={() => ButtonAccept(login, password, name, userName)}>  
+                <Text style={{fontSize: 18}}>Принять</Text>   
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.buttonEnter}
+                onPress={() => openScreen()}>
+                <Text style={{fontSize: 20}}>Зарегистрироваться</Text> 
+            </TouchableOpacity>
         </View>
     )
 } 

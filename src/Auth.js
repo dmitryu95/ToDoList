@@ -1,27 +1,27 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, TextInput, TouchableOpacity, ImageBackground, Button } from 'react-native';
+import { View, Text, StyleSheet, TextInput, TouchableOpacity, Button } from 'react-native';
 
 export default function Auth({ navigation }) {
+    // БЛОК НАВИГАЦИИ
     const openNotes = () => { navigation.navigate('Notes') }
     const openRegistration = () => { navigation.navigate('Registration') }
     const openApi = () => { navigation.navigate('ApiRequest') }
 
-    const [login, setLogin] = useState([]);
-    const getLogin = (value) => {
-        setLogin(value);
-    }
-
+    // БЛОК СОСТОЯНИЙ
+    const [login, setLogin] = useState('');
     const [password, setPassword] = useState('');
-    const getPass = (value) => {
-        setPassword(value);
-    }
+
+    // БЛОК С ПОЛУЧЕНИЕМ ТОКЕНА
+    /*const storeToken = async (token) => {
+        try{
+            await AsyncStorage.setItem('token', token)
+        } catch (e) { alert('cant save token') }
+
+    }*/
 
     const ButtonAccept = () => {
-        return (
-            <TouchableOpacity style={styles.button} >  
-                <Text style={{fontSize: 18}}>Принять</Text>   
-            </TouchableOpacity>
-        )    
+        setLogin('')
+        setPassword('')
     }
 
     return (
@@ -30,20 +30,36 @@ export default function Auth({ navigation }) {
             <View>
                 <View style={styles.loginPass}>
                     <Text style={styles.text}>Логин:</Text>
-                    <TextInput style={styles.input} onChangeText={getLogin} placeholder='Введите логин...'></TextInput>
+                    <TextInput 
+                        style={styles.input} 
+                        value={login}
+                        onChangeText={setLogin} 
+                        placeholder='Введите логин...'>
+                        </TextInput>
                 </View>
                 <View style={styles.loginPass}>
                     <Text style={styles.text}>Пароль:</Text>
-                    <TextInput style={styles.input} onChangeText={getPass} placeholder='Введите пароль...'></TextInput>                        
-                    <ButtonAccept />
+                    <TextInput 
+                        style={styles.input} 
+                        value={password}
+                        onChangeText={setPassword} 
+                        placeholder='Введите пароль...'>
+                    </TextInput>                        
+                    <TouchableOpacity 
+                        style={styles.button}
+                        onPress={() => ButtonAccept(login, password)}>  
+                        <Text style={{fontSize: 18}}>Принять</Text>   
+                    </TouchableOpacity>
                 </View>
                 <View style={styles.buttonEnter} >
-                    <TouchableOpacity  onPress={() => openNotes()}>
+                    <TouchableOpacity  
+                        onPress={() => openNotes()}>
                         <Text style={{fontSize: 20}}>Войти</Text> 
                     </TouchableOpacity>
                 </View>
                 <View style={styles.buttonEnter} >
-                    <TouchableOpacity  onPress={() => openRegistration()}>
+                    <TouchableOpacity  
+                        onPress={() => openRegistration()}>
                         <Text style={{fontSize: 20}}>Регистрация</Text> 
                     </TouchableOpacity>
                 </View>
