@@ -1,49 +1,70 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, TextInput, Button, TouchableOpacity, ImageBackground } from 'react-native';
+import {Network} from './source/Network';
 
 export default function Registration({ navigation }) {
     const openScreen = () => { navigation.navigate('Notes') }
 
-    const [login, setLogin] = useState([]);
+    const [login, setLogin] = useState('');
     const [password, setPassword] = useState('');
-    const [name, setName] = useState('');
-    const [userName, setUserName] = useState('');
+    const [postId, setPostId] = useState('0');
 
     const ButtonAccept = () => {
-        setLogin('')
-        setPassword('')  
-        setName('')
-        setUserName('')
-    }
+       
 
-    const FormRegistration = (props) => {
-        return(
-            <View style={styles.loginPass}>
-                <Text style={styles.text}>{props.title}</Text>
-                <TextInput style={styles.input} 
-                    value={props.stateText}
-                    onChangeText={props.stateText} 
-                    placeholder={props.holder}></TextInput>
-            </View>
-        )
+            const requestOptions = {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ 
+                    email: 'asrg1234@udhfh.cos', 
+                    password: '5er64' })
+            };
+            fetch('localhost:3000/api/users', requestOptions)
+                .then(response => response.json())
+                .then(data => setPostId(data.id))
+                .then(console.log({postId}))
+                .then(console.log({response}))
     }
+    
+    
+    // const ButtonAccept = (login, password) => {
+    //     try{
+    //         Network('Users', 'POST', {login, password})
+    //     } catch (error) {
+    //          console.log("errorгруфшгварушщгрксщшгурсщшр", error) 
+    //     }  
+    //     setLogin('')
+    //     setPassword('')  
+    // }
 
     return (
         <View style={styles.main}>
         <Text style={styles.auth}>Регистрация</Text>
-            <FormRegistration title={"Введите Email"} stateText={() => setLogin()} holder={'Введите логин...'}  />
-            <FormRegistration title={"Введите Пароль"} stateText={() => setPassword()} holder={'Введите пароль...'}  />
-            <FormRegistration title={"Введите ваше Имя"} stateText={() => setName()} holder={'Введите ваше имя...'}  />
-            <FormRegistration title={"Введите ваш Никнейм"} stateText={() => setUserName()} holder={'Введите ваш никнейм...'}  />
-            <TouchableOpacity 
+        <View style={styles.loginPass}>
+            <Text style={styles.text}>Придумайте логин(Email)</Text>
+            <TextInput style={styles.input}  
+                value={login}
+                onChangeText={text => setLogin(text)}
+                placeholder='Введите ваш Email'/>
+        </View>
+        <View style={styles.loginPass}>
+            <Text style={styles.text}>Придумайте пароль</Text>
+            <TextInput style={styles.input}  
+                value={password}
+                onChangeText={text => setPassword(text)}
+                placeholder='Введите ваш пароль'/>
+        </View>
+        <TouchableOpacity 
                 style={styles.button}
-                onPress={() => ButtonAccept(login, password, name, userName)}>  
-                <Text style={{fontSize: 18}}>Принять</Text>   
+                onPress={() => ButtonAccept()}>  
+                <Text style={{fontSize: 18}}>Принять</Text>  
             </TouchableOpacity>
-            <TouchableOpacity style={styles.buttonEnter}
-                onPress={() => openScreen()}>
-                <Text style={{fontSize: 20}}>Зарегистрироваться</Text> 
-            </TouchableOpacity>
+            <View style={{position: 'absolute', bottom:2, left:0, width: '100%',}}>
+                <TouchableOpacity style={styles.buttonReg}
+                    onPress={() => openScreen()}>
+                    <Text style={{fontSize: 20}}>Зарегистрироваться</Text> 
+                </TouchableOpacity>
+            </View>
         </View>
     )
 } 
@@ -99,7 +120,7 @@ const styles=StyleSheet.create({
         marginTop: '5%',
         marginBottom: 50,
     },
-    buttonEnter: {
+    buttonReg: {
         borderStyle: 'solid',
         borderWidth: 2,
         height: 35,

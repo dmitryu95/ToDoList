@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { View, StyleSheet, Text, Button, ImageBackground, TextInput, TouchableOpacity } from 'react-native';
+import { View, StyleSheet, Text, Button, ImageBackground, TouchableOpacity } from 'react-native';
 import TodoList from './ TodoList';
 import AddNote from './AddNote';
 
@@ -42,6 +42,8 @@ const styles=StyleSheet.create({
         flex: 4,
     },
     auth: {
+        bottom: 0,
+        width: '100%',
         height: '5%',
         backgroundColor: 'green',
         alignItems: 'center',

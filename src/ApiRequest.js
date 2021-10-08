@@ -5,11 +5,11 @@ const ApiRequest = () => {
   const [isLoading, setLoading] = useState(true);
   const [data, setData] = useState([]);
 
-  const getMovies = async () => {
+  const getJSON = async () => {
      try {
-      const response = await fetch('http://reactnative.dev/movies.json');
+      const response = await fetch('http://jsonplaceholder.typicode.com/users');
       const json = await response.json();
-      setData(json.movies);
+      setData(json);
     } catch (error) {
       console.error(error);
     } finally {
@@ -18,7 +18,7 @@ const ApiRequest = () => {
   }
 
   useEffect(() => {
-    getMovies();
+    getJSON();
   }, []);
 
   return (
@@ -28,7 +28,7 @@ const ApiRequest = () => {
           data={data}
           keyExtractor={({ id }, index) => id}
           renderItem={({ item }) => (
-            <Text>{item.title}, {item.releaseYear}</Text>
+            <Text>{item.address.street}</Text>
           )}
         />
       )}
