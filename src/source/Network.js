@@ -1,50 +1,60 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { Alert, View } from "react-native";
 
-const Network = () =>{
-    const [postId, setPostId] = useState(null);
+export const Network = async (url, method, login, password, navigation) => {
 
-    useEffect(() => {
-        const requestOptions = {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ 
-                email: 'csssaswe1234@udhfh.cos', 
-                password: '5dxdsg3s4as845564' })
-        };
-        fetch('http://localhost:3000/api/users', requestOptions)
-            .then(response => response.json())
-            .then(data => setPostId(data.id));
+  console.log(url, method, login, password);
+  let token = "";
 
-    }, []);
-
-    return (
-        <div className="card text-center m-3">   
-                Returned Id: {postId}
-        </div>
-    );
-}
-
-export { Network };
-
-
+  await AsyncStorage.getItem("token").then((value) => {
+    token = value;
+  });
+  return fetch(`http://10.102.132.128:300/api/${url}`, {
+    method: method,
+    headers: {
+      "Content-Type": "application/json",
+      access_token: token,
+    },
+    body: JSON.stringify({
+      email: login,
+      password: password,
+    }),
+  }).then((response) => {
+      console.log(111, response);   //проверка токена. Нет токена -> Auth
+      (response.status == '200')
+        ? Alert.alert("",`Авторизация пройдена, ${response.status}`)
+        : Alert.alert("Ошибка", "Пользователь существует или данные заполнены неверно")
+  })
+};
 
 
 
-// export const Network = async (url, method, body) => {
-//     console.log(url, method, body);
+
+
+
+
+
+// export const Network = async (url, method, login, password, navigation) => {
+//   console.log(url, method, login, password);
+//   const [postId, setPostId] = useState(null);
+
 //   let token = "";
-//   await AsyncStorage.getItem('token').then((value) => {token = value})
-//   return fetch(`localhost:3000/api/${url}`, {
+//   await AsyncStorage.getItem("token").then((value) => {
+//     token = value;
+//   });
+
+//   return fetch(`http://10.102.132.128:300/api/${url}`, {
 //     method: method,
 //     headers: {
 //       "Content-Type": "application/json",
-//       access_token: token
+//       access_token: token,
 //     },
-//     body: body ? JSON.stringify(body) : null,
-//   })
-//     .then((response) => {               //проверка токена. Нет токена -> Auth
-//         console.log(111, response);
-//         //response.status == 401 ? navigation.navigate('Auth') : response
-
+//     body: JSON.stringify({
+//       email: login,
+//       password: password,
 //     })
-// };
+//   }).then(response => response.json())
+//     .then(res => setPostId(res.id))
+//     .then(() => console.log("твой номере", postId))
+//   };

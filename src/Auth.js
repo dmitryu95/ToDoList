@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, TextInput, TouchableOpacity, Button } from 'react-native';
+import { navigation } from "../navigate"
 
 export default function Auth({ navigation }) {
     // БЛОК НАВИГАЦИИ
