@@ -20,13 +20,14 @@ export default function Registration({ navigation }) {
   const [password, setPassword] = useState("");
 
   const ButtonAccept = async (login, password) => {
-    if (login && password !== "") {
+     if(login && password !== "") {
       try {
           Network("Users", "POST", login, password)
-          .then(response => {
-            console.log(response)
-            console.log("id ",response.id)
-        })
+          .then( response => {
+            (response.id)
+            ? (Alert.alert("",`Пользователь сохранен, можете авторизироваться`),
+              openAuth())
+            : Alert.alert("",`Ошибка, возможно пользователь существует `)})
       } catch(error) {
           console.log("error", error)
       }
@@ -34,6 +35,12 @@ export default function Registration({ navigation }) {
   setLogin('')
   setPassword('')
   };
+
+// .then( response => {
+//   (response.error.statusCode == 422)
+//   ? Alert.alert("",`Авторизация не пройдена`)
+//   : Alert.alert("",`Пользователь сохранен, можете авторизироваться`)
+// })
 
   return (
     <View style={styles.main}>
@@ -62,11 +69,9 @@ export default function Registration({ navigation }) {
       >
         <Text style={{ fontSize: 18 }}>Принять</Text>
       </TouchableOpacity>
-      <View style={{ position: "absolute", bottom: 2, left: 0, width: "100%" }}>
-        <TouchableOpacity style={styles.buttonEnter} onPress={() => openAuth()}>
-          <Text style={{ fontSize: 20 }}>Авторизация</Text>
-        </TouchableOpacity>
-      </View>
+      <TouchableOpacity style={styles.buttonEnter} onPress={() => openAuth()}>
+        <Text style={{ fontSize: 20 }}>Авторизация</Text>
+      </TouchableOpacity>
     </View>
   );
 }

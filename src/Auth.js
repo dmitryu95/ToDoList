@@ -24,8 +24,12 @@ export default function Auth({ navigation }) {
     const ButtonAccept = (login, password) => {
         if (login && password !== "") {
             try {
-                Network("User/User_login", "POST", login, password)
-                console.log(json())
+                Network("Users/login", "POST", login, password)
+                .then( response => {
+                    (response.id)
+                    ? (Alert.alert("",`Пользователь авторизирован`),
+                      openNotes())
+                    : Alert.alert("",`Ошибка, возможно пользователь не существует `)})
             } catch(error) {
                 console.log("error", error)
             }

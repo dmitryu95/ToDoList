@@ -19,16 +19,15 @@ const Network = async (url, method, login, password) => {
       password: password,
     })
   })
-  if (response.status == '200') {
-    Alert.alert("",`Авторизация пройдена, ${response.status}`)
-    console.log(111, response);
-    return response.json();
-  } else Alert.alert("Ошибка", "Пользователь существует или данные заполнены неверно")
+  return response.json();
 };
 
 export {Network};
 
-
+// if (response.status == '200') {
+//   Alert.alert("",`Авторизация пройдена, ${response.status}`)
+//   console.log(111, response)
+// } else Alert.alert("Ошибка", "Пользователь существует или данные заполнены неверно")
 
 
 
