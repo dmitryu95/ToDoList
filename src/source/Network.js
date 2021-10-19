@@ -2,15 +2,13 @@ import React, { useState, useEffect } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Alert, View } from "react-native";
 
-export const Network = async (url, method, login, password, navigation) => {
-
+const Network = async (url, method, login, password) => {
   console.log(url, method, login, password);
-  let token = "";
 
-  await AsyncStorage.getItem("token").then((value) => {
-    token = value;
-  });
-  return fetch(`http://10.102.132.128:300/api/${url}`, {
+  let token = "";
+  await AsyncStorage.getItem("token").then((value) => { token = value })
+
+  const response = await fetch(`http://10.102.132.128:300/api/${url}`, {
     method: method,
     headers: {
       "Content-Type": "application/json",
@@ -19,14 +17,16 @@ export const Network = async (url, method, login, password, navigation) => {
     body: JSON.stringify({
       email: login,
       password: password,
-    }),
-  }).then((response) => {
-      console.log(111, response);   //проверка токена. Нет токена -> Auth
-      (response.status == '200')
-        ? Alert.alert("",`Авторизация пройдена, ${response.status}`)
-        : Alert.alert("Ошибка", "Пользователь существует или данные заполнены неверно")
+    })
   })
+  if (response.status == '200') {
+    Alert.alert("",`Авторизация пройдена, ${response.status}`)
+    console.log(111, response);
+    return response.json();
+  } else Alert.alert("Ошибка", "Пользователь существует или данные заполнены неверно")
 };
+
+export {Network};
 
 
 

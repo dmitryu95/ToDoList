@@ -9,7 +9,7 @@ import { NavigationContainer } from '@react-navigation/native';
 
 const Stack = createStackNavigator();
 
-function Navigate() {
+const Navigate = () => {
     return (
         <NavigationContainer>
             <Stack.Navigator initialRouteName="Auth">
