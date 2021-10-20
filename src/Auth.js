@@ -10,8 +10,9 @@ export default function Auth({ navigation }) {
     const openApi = () => { navigation.navigate('ApiRequest') }
 
     // БЛОК СОСТОЯНИЙ
-    const [login, setLogin] = useState('');
+    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [userId, setUserId] = useState('');
 
     // БЛОК С ПОЛУЧЕНИЕМ ТОКЕНА
     /*const storeToken = async (token) => {
@@ -21,20 +22,21 @@ export default function Auth({ navigation }) {
 
     }*/
 
-    const ButtonAccept = (login, password) => {
-        if (login && password !== "") {
+    const ButtonAccept = (email, password) => {
+        if (email && password !== "") {
             try {
-                Network("Users/login", "POST", login, password)
+                Network("Users/login", "POST", {email, password})
                 .then( response => {
                     (response.id)
                     ? (Alert.alert("",`Пользователь авторизирован`),
+                      setUserId(response.id),
                       openNotes())
                     : Alert.alert("",`Ошибка, возможно пользователь не существует `)})
             } catch(error) {
                 console.log("error", error)
             }
         } else Alert.alert("","Заполните все поля") 
-        setLogin('')
+        setEmail('')
         setPassword('')
     }
 
@@ -46,8 +48,8 @@ export default function Auth({ navigation }) {
                     <Text style={styles.text}>Логин:</Text>
                     <TextInput 
                         style={styles.input} 
-                        value={login}
-                        onChangeText={setLogin} 
+                        value={email}
+                        onChangeText={setEmail} 
                         placeholder='Введите логин...'>
                         </TextInput>
                 </View>
@@ -61,7 +63,7 @@ export default function Auth({ navigation }) {
                     </TextInput>                        
                     <TouchableOpacity 
                         style={styles.button}
-                        onPress={() => ButtonAccept(login, password)}>  
+                        onPress={() => ButtonAccept(email, password)}>  
                         <Text style={{fontSize: 18}}>Принять</Text>   
                     </TouchableOpacity>
                 </View>
@@ -71,13 +73,7 @@ export default function Auth({ navigation }) {
                         <Text style={{fontSize: 20}}>Регистрация</Text> 
                     </TouchableOpacity>
                 </View>
-                <View style={styles.buttonEnter}>
-                    <TouchableOpacity  
-                        onPress={() => openNotes()}>
-                        <Text style={{fontSize: 20}}>Заметки</Text> 
-                    </TouchableOpacity>
-                </View>
-                <Button style={styles.buttonEnter} title="Получение JSON" onPress={() => openApi()} />
+                <Button style={styles.buttonEnter} title="Получение JSON (Тест)" onPress={() => openApi()} />
             </View>
         </View>
     )

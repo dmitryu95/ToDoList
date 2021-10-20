@@ -16,13 +16,13 @@ export default function Registration({ navigation }) {
     navigation.navigate("Auth");
   };
 
-  const [login, setLogin] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const ButtonAccept = async (login, password) => {
-     if(login && password !== "") {
+  const ButtonAccept = async (email, password) => {
+     if(email && password !== "") {
       try {
-          Network("Users", "POST", login, password)
+          Network("Users", "POST", {email, password})
           .then( response => {
             (response.id)
             ? (Alert.alert("",`Пользователь сохранен, можете авторизироваться`),
@@ -32,15 +32,10 @@ export default function Registration({ navigation }) {
           console.log("error", error)
       }
   } else Alert.alert("","Заполните все поля") 
-  setLogin('')
+  setEmail('')
   setPassword('')
   };
 
-// .then( response => {
-//   (response.error.statusCode == 422)
-//   ? Alert.alert("",`Авторизация не пройдена`)
-//   : Alert.alert("",`Пользователь сохранен, можете авторизироваться`)
-// })
 
   return (
     <View style={styles.main}>
@@ -49,8 +44,8 @@ export default function Registration({ navigation }) {
         <Text style={styles.text}>Придумайте логин(Email)</Text>
         <TextInput
           style={styles.input}
-          value={login}
-          onChangeText={(text) => setLogin(text)}
+          value={email}
+          onChangeText={(text) => setEmail(text)}
           placeholder="Введите ваш Email"
         />
       </View>
@@ -65,7 +60,7 @@ export default function Registration({ navigation }) {
       </View>
       <TouchableOpacity
         style={styles.button}
-        onPress={() => ButtonAccept(login, password)}
+        onPress={() => ButtonAccept(email, password)}
       >
         <Text style={{ fontSize: 18 }}>Принять</Text>
       </TouchableOpacity>

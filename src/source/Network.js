@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Alert, View } from "react-native";
 
-const Network = async (url, method, login, password) => {
-  console.log(url, method, login, password);
+const Network = async (url, method, body) => {
+  console.log(url, method, body);
 
   let token = "";
   await AsyncStorage.getItem("token").then((value) => { token = value })
@@ -14,20 +14,12 @@ const Network = async (url, method, login, password) => {
       "Content-Type": "application/json",
       access_token: token,
     },
-    body: JSON.stringify({
-      email: login,
-      password: password,
-    })
+    body: JSON.stringify( body )
   })
   return response.json();
 };
 
 export {Network};
-
-// if (response.status == '200') {
-//   Alert.alert("",`Авторизация пройдена, ${response.status}`)
-//   console.log(111, response)
-// } else Alert.alert("Ошибка", "Пользователь существует или данные заполнены неверно")
 
 
 
