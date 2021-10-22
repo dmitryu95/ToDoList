@@ -15,6 +15,7 @@ MERGED from [:react-native-screens] /Users/dmitriyu/Documents/toDoList/node_modu
 MERGED from [com.facebook.react:react-native:0.65.1] /Users/dmitriyu/.gradle/caches/transforms-2/files-2.1/070c0e59ce9d9ab70862c576c1e5b90c/jetified-react-native-0.65.1/AndroidManifest.xml:2:1-11:12
 MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] /Users/dmitriyu/.gradle/caches/transforms-2/files-2.1/5c64f35c4f864d4cd139ccbbff91ceb9/swiperefreshlayout-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [org.webkit:android-jsc:r250230] /Users/dmitriyu/.gradle/caches/transforms-2/files-2.1/7026c05f327ba5d9040050cc3b6389aa/jetified-android-jsc-r250230/AndroidManifest.xml:2:1-11:12
+MERGED from [:react-native-reanimated] /Users/dmitriyu/Documents/toDoList/node_modules/react-native-reanimated/android/build/.transforms/0128bbb7ac85eab09d89d5c32d01a9a8/jetified-react-native-reanimated-65-jsc/AndroidManifest.xml:2:1-9:12
 MERGED from [com.facebook.fresco:flipper:2.2.0] /Users/dmitriyu/.gradle/caches/transforms-2/files-2.1/84c6a932a42f35f9b796c5d67e6eb742/jetified-flipper-2.2.0/AndroidManifest.xml:2:1-9:12
 MERGED from [com.facebook.fresco:stetho:2.2.0] /Users/dmitriyu/.gradle/caches/transforms-2/files-2.1/5f2c193a45b1b439ec8f5a8edcb37f33/jetified-stetho-2.2.0/AndroidManifest.xml:2:1-9:12
 MERGED from [com.facebook.fresco:fresco:2.5.0] /Users/dmitriyu/.gradle/caches/transforms-2/files-2.1/8314f55d57c1886698ca28e222f6c560/jetified-fresco-2.5.0/AndroidManifest.xml:2:1-9:12
@@ -174,6 +175,8 @@ MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] /Users/dmitri
 MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] /Users/dmitriyu/.gradle/caches/transforms-2/files-2.1/5c64f35c4f864d4cd139ccbbff91ceb9/swiperefreshlayout-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [org.webkit:android-jsc:r250230] /Users/dmitriyu/.gradle/caches/transforms-2/files-2.1/7026c05f327ba5d9040050cc3b6389aa/jetified-android-jsc-r250230/AndroidManifest.xml:7:5-9:41
 MERGED from [org.webkit:android-jsc:r250230] /Users/dmitriyu/.gradle/caches/transforms-2/files-2.1/7026c05f327ba5d9040050cc3b6389aa/jetified-android-jsc-r250230/AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-reanimated] /Users/dmitriyu/Documents/toDoList/node_modules/react-native-reanimated/android/build/.transforms/0128bbb7ac85eab09d89d5c32d01a9a8/jetified-react-native-reanimated-65-jsc/AndroidManifest.xml:5:5-7:41
+MERGED from [:react-native-reanimated] /Users/dmitriyu/Documents/toDoList/node_modules/react-native-reanimated/android/build/.transforms/0128bbb7ac85eab09d89d5c32d01a9a8/jetified-react-native-reanimated-65-jsc/AndroidManifest.xml:5:5-7:41
 MERGED from [com.facebook.fresco:flipper:2.2.0] /Users/dmitriyu/.gradle/caches/transforms-2/files-2.1/84c6a932a42f35f9b796c5d67e6eb742/jetified-flipper-2.2.0/AndroidManifest.xml:5:5-7:41
 MERGED from [com.facebook.fresco:flipper:2.2.0] /Users/dmitriyu/.gradle/caches/transforms-2/files-2.1/84c6a932a42f35f9b796c5d67e6eb742/jetified-flipper-2.2.0/AndroidManifest.xml:5:5-7:41
 MERGED from [com.facebook.fresco:stetho:2.2.0] /Users/dmitriyu/.gradle/caches/transforms-2/files-2.1/5f2c193a45b1b439ec8f5a8edcb37f33/jetified-stetho-2.2.0/AndroidManifest.xml:5:5-7:41

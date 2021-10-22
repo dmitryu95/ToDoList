@@ -4,14 +4,13 @@ import Notes from './src/Notes';
 import Registration from './src/Registration';
 import ApiRequest from './src/ApiRequest'
 
-import { createStackNavigator } from '@react-navigation/stack';
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { NavigationContainer } from '@react-navigation/native';
 
-const Stack = createStackNavigator();
+const Stack = createNativeStackNavigator()
 
 const Navigate = () => {
     return (
-        <NavigationContainer>
             <Stack.Navigator initialRouteName="Auth">
                 <Stack.Screen
                     options={{headerShown: false}}
@@ -30,7 +29,6 @@ const Navigate = () => {
                     name='ApiRequest'
                     component={ApiRequest} />
             </Stack.Navigator>
-        </NavigationContainer>
     );
 }
 

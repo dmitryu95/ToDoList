@@ -1,10 +1,16 @@
 import React from 'react';
-import Navigate from './navigate';
+import DrawerNavigation from './DrawerNavigation';
+import { NavigationContainer } from '@react-navigation/native';
+import Navigate from "./Navigate";
 
-export default function App() {
+const App = () => {
   return (
-      <Navigate />
+    <NavigationContainer> 
+      <DrawerNavigation />
+    </NavigationContainer>
   )
 }
+
+export default App;
 
 
