@@ -6,7 +6,7 @@ import Navigate from "./Navigate";
 const App = () => {
   return (
     <NavigationContainer> 
-      <DrawerNavigation />
+      <Navigate/>
     </NavigationContainer>
   )
 }

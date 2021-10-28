@@ -7,7 +7,6 @@ export default function Auth({ navigation }) {
     // БЛОК НАВИГАЦИИ
     const openNotes = () => { navigation.navigate('Notes') }
     const openRegistration = () => { navigation.navigate('Registration') }
-    const openApi = () => { navigation.navigate('ApiRequest') }
 
     // БЛОК СОСТОЯНИЙ
     const [email, setEmail] = useState('');
@@ -73,7 +72,6 @@ export default function Auth({ navigation }) {
                         <Text style={{fontSize: 20}}>Регистрация</Text> 
                     </TouchableOpacity>
                 </View>
-                <Button style={styles.buttonEnter} title="Получение JSON (Тест)" onPress={() => openApi()} />
             </View>
         </View>
     )

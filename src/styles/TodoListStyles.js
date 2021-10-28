@@ -9,7 +9,6 @@ const styles = StyleSheet.create({
     },
     list: {
       backgroundColor: 'white',
-      fontSize: 19,
       width: '73%',
       borderStyle: 'solid',
       borderWidth: 2,
@@ -18,6 +17,8 @@ const styles = StyleSheet.create({
       borderTopRightRadius: 5,
       borderBottomLeftRadius: 5,
       borderBottomRightRadius: 5,
+      flexDirection: 'row',
+      alignItems: 'center',
     },
     buttonDel: {
       justifyContent: 'center',
@@ -74,8 +75,7 @@ const styles = StyleSheet.create({
       borderBottomRightRadius: 10,
     },
     text: {
-      fontSize: 40,
-      color: 'white',
+      fontSize: 16,
     },
   });
 

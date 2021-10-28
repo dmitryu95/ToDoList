@@ -2,7 +2,6 @@ import React from 'react';
 import Auth from './src/Auth';
 import Notes from './src/Notes';
 import Registration from './src/Registration';
-import ApiRequest from './src/ApiRequest'
 
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { NavigationContainer } from '@react-navigation/native';
@@ -24,10 +23,6 @@ const Navigate = () => {
                     options={{headerShown: false}}
                     name='Registration'
                     component={Registration} />
-                <Stack.Screen
-                    option={{headerShown: false}}
-                    name='ApiRequest'
-                    component={ApiRequest} />
             </Stack.Navigator>
     );
 }
