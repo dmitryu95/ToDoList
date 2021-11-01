@@ -4,16 +4,17 @@ import { styles } from './styles/AddNotesStyles';
 
 const AddNote = ({ addNewNote }) => {
     const [text, setText] = useState('');
-        
+    
     return(
         <View style={styles.inputeBlock}>
-            <TextInput style={styles.input} 
+            <TextInput 
+                style={styles.input} 
                 onChangeText={setText} 
                 value={text}
                 placeholder='Введите заметку...'/>
             <TouchableOpacity 
                 style={styles.add} 
-                onPress={() => addNewNote(text)} >
+                onPress={() => {( addNewNote(text), setText('') )}} >
             <Text style={styles.text}>+</Text>
             </TouchableOpacity>
         </View>

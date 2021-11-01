@@ -3,6 +3,7 @@ import { View, TouchableOpacity, Text, FlatList, TextInput} from 'react-native';
 import { styles } from './styles/TodoListStyles';
 import CheckBox from '@react-native-community/checkbox';
 import TodoItem from './TodoItem';
+import AddNote from './AddNote';
 
 const TodoList = () => {
   const [listOfItems, setListOfItems] = useState([]);
@@ -15,12 +16,14 @@ const TodoList = () => {
       return [
         { 
           title: text, 
-          id: Math.random().toString(36).substr(2), 
+          id: Math.random().toString(36).substr(2),
+          completeTask: false 
         },
         ...list,
       ]
     })
     setText('')
+  
   }
 
   const renderItem = ({item}) => {
@@ -28,23 +31,12 @@ const TodoList = () => {
       <View style={styles.main}> 
         <TodoItem title={item.title}/>
         
-  { /*/////// кнопка редактированить  ///////////*/}
-        <TouchableOpacity style={styles.buttonEdit}
-          onPress={() => editItem()}>
-          <Text>Edit</Text>
-        </TouchableOpacity>
-
-  { /*/////// кнопка удалить  ///////////*/}
         <TouchableOpacity style={styles.buttonDel}
           onPress={() => deleteNote(item.id)}>
           <Text style={styles.del}>X</Text>
         </TouchableOpacity>
       </View>
     )
-  }
-
-  const editItem = () => {
-    
   }
 
   const deleteNote = id => {
@@ -55,19 +47,7 @@ const TodoList = () => {
 
   return (
     <View>
-      <View style={styles.inputeBlock}>
-        <TextInput
-          style={styles.input}
-          value={text}
-          onChangeText={setText}
-          placeholder="Введите заметку..."/>
-
-        <TouchableOpacity 
-          style={styles.add} 
-          onPress={() => addNewNote(text)}>
-          <Text style={styles.text}>+</Text>
-        </TouchableOpacity>
-      </View>
+      <AddNote addNewNote={addNewNote}/>
 
       <FlatList
         data={listOfItems}

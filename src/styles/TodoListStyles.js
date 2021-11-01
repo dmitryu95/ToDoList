@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
     },
     list: {
       backgroundColor: 'white',
-      width: '73%',
+      width: '80%',
       borderStyle: 'solid',
       borderWidth: 2,
       borderColor: '#3949ab',
@@ -73,6 +73,9 @@ const styles = StyleSheet.create({
       borderTopRightRadius: 10,
       borderBottomLeftRadius: 10,
       borderBottomRightRadius: 10,
+    },
+    textBlock: {
+      width: '90%',
     },
     text: {
       fontSize: 16,
