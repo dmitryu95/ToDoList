@@ -6,8 +6,6 @@ import {
   FlatList,
   TextInput,
 } from "react-native";
-import { styles } from "./styles/TodoListStyles";
-import CheckBox from "@react-native-community/checkbox";
 import TodoItem from "./TodoItem";
 import AddNote from "./AddNote";
 

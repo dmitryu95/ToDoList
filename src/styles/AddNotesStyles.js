@@ -3,7 +3,7 @@ import { StyleSheet } from "react-native"
 const styles=StyleSheet.create({
     inputeBlock: {
         flexDirection: 'row',
-        margin: 2,
+        margin: 10,
         justifyContent: 'center',
     },
     input: {

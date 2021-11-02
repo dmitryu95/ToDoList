@@ -13,10 +13,11 @@ export default function Notes ({navigation}) {
     return (
         <ImageBackground source = {require('./image/backgroundNotes.jpeg')} resizeMode="cover" style={styles.image}>
             <Text style={styles.navbar}>Заметки</Text>
-
+            
             <View style={styles.container}>
                 <TodoList />
             </View>
+
             <TouchableOpacity  onPress={() => closeNote()} style={styles.auth}>
                 <Text style={{fontSize: 25}}> К авторизации</Text> 
             </TouchableOpacity>
