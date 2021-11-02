@@ -1,57 +1,56 @@
-import React, {useState} from 'react';
-import { View, TouchableOpacity, Text, FlatList, TextInput} from 'react-native';
-import { styles } from './styles/TodoListStyles';
-import CheckBox from '@react-native-community/checkbox';
-import TodoItem from './TodoItem';
-import AddNote from './AddNote';
+import React, { useState } from "react";
+import {
+  View,
+  TouchableOpacity,
+  Text,
+  FlatList,
+  TextInput,
+} from "react-native";
+import { styles } from "./styles/TodoListStyles";
+import CheckBox from "@react-native-community/checkbox";
+import TodoItem from "./TodoItem";
+import AddNote from "./AddNote";
 
 const TodoList = () => {
   const [listOfItems, setListOfItems] = useState([]);
-  const [text, setText] = useState('');
-  const [completeTask, setCompleteTask] = useState(false)
+  const [text, setText] = useState("");
+  const [completeTask, setCompleteTask] = useState(false);
 
   /* text - то, что ввел пользователь */
-  const addNewNote = text => {
-    setListOfItems(list => {
+  const addNewNote = (text) => {
+    setListOfItems((list) => {
       return [
-        { 
-          title: text, 
+        {
+          title: text,
           id: Math.random().toString(36).substr(2),
-          completeTask: false 
+          completeTask: false,
         },
         ...list,
-      ]
-    })
-    setText('')
-  
-  }
+      ];
+    });
+    setText("");
+  };
 
-  const renderItem = ({item}) => {
-    return(
-      <View style={styles.main}> 
-        <TodoItem title={item.title}/>
-        
-        <TouchableOpacity style={styles.buttonDel}
-          onPress={() => deleteNote(item.id)}>
-          <Text style={styles.del}>X</Text>
-        </TouchableOpacity>
+  const deleteNote = (id) => {
+    setListOfItems((list) =>
+      list.filter((listOfItems) => listOfItems.id != id)
+    );
+  };
+
+  const renderItem = ({ item }) => {
+    return (
+      <View>
+        <TodoItem item={item} deleteNote={deleteNote} />
       </View>
-    )
-  }
-
-  const deleteNote = id => {
-    setListOfItems(list => {
-      return list.filter(listOfItems => listOfItems.id != id)
-    })
-  }
+    );
+  };
 
   return (
     <View>
-      <AddNote addNewNote={addNewNote}/>
-
+      <AddNote addNewNote={addNewNote} />
       <FlatList
         data={listOfItems}
-        keyExtractor={item => item.id}
+        keyExtractor={(item) => item.id}
         renderItem={renderItem}
       />
     </View>
