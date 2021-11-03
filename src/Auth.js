@@ -27,7 +27,7 @@ export default function Auth({ navigation }) {
                 Network("Users/login", "POST", {email, password})
                 .then( response => {
                     (response.id)
-                    ? (Alert.alert("",`Пользователь авторизирован`),
+                    ? (Alert.alert("",`Пользователь авторизован`),
                       setUserId(response.id),
                       openNotes())
                     : Alert.alert("",`Ошибка, возможно пользователь не существует `)})
