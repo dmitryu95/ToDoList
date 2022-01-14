@@ -3,18 +3,18 @@ import { View, Text, StyleSheet, TextInput, TouchableOpacity } from 'react-nativ
 import { styles } from './styles/AddNotesStyles';
 
 const AddNote = ({ addNewNote }) => {
-    const [text, setText] = useState('');
+    const [title, setTitle] = useState('');
     
     return(
         <View style={styles.inputeBlock}>
             <TextInput 
                 style={styles.input} 
-                onChangeText={setText} 
-                value={text}
+                onChangeText={setTitle} 
+                value={title}
                 placeholder='Введите заметку...'/>
             <TouchableOpacity 
                 style={styles.add} 
-                onPress={() => {( addNewNote(text), setText('') )}} >
+                onPress={() => {( addNewNote(title), setTitle('') )}} >
             <Text style={styles.text}>+</Text>
             </TouchableOpacity>
         </View>

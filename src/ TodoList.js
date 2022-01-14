@@ -1,44 +1,66 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   View,
   TouchableOpacity,
   Text,
   FlatList,
   TextInput,
+  StyleSheet,
 } from "react-native";
 import TodoItem from "./TodoItem";
+import { Network } from './source/Network';
 import AddNote from "./AddNote";
 
-const TodoList = () => {
-  const [listOfItems, setListOfItems] = useState([]);
-  const [text, setText] = useState("");
+const TodoList = ({idUser, navigation}) => {
+  const [listOfItems, setListOfItems] = useState('');
+  const [title, setTitle] = useState("");
   const [completeTask, setCompleteTask] = useState(false);
 
+  const openAuth = () => { navigation.navigate('Auth') }
+  const cleanList = () => ( setListOfItems('') )  
+  const logout = () => ( Network("Users/logout?access_token=",idUser, "POST") )
+
   /* text - то, что ввел пользователь */
-  const addNewNote = (text) => {
+////////////////////////////////////////////////////////////
+  const fullUrl="tasks?access_token=";
+  const Method = "GET"
+
+  console.log("фулл сработал:", fullUrl+idUser);
+
+    useEffect(() => {
+      Network(fullUrl,idUser, Method)
+      .then(response => setListOfItems(response))
+    }, [])
+  
+////////////////////////////////////////////////////////////
+
+  const addNewNote = (title) => {
     setListOfItems((list) => {
       return [
         {
-          title: text,
+          title: title,
           id: Math.random().toString(36).substr(2),
           completeTask: false,
         },
         ...list,
       ];
-    });
-    setText("");
+    })
+    Network(fullUrl, idUser, "POST", {title})
+    setTitle("");
   };
 
   const deleteNote = (id) => {
-    setListOfItems((list) =>
+    setListOfItems((list) => (
+      Network(`tasks/${id}?access_token=`, idUser, "DELETE"),
       list.filter((listOfItems) => listOfItems.id != id)
+    )
     );
   };
 
   const renderItem = ({ item }) => {
     return (
       <View>
-        <TodoItem item={item} deleteNote={deleteNote} />
+          <TodoItem item={item} deleteNote={deleteNote} />
       </View>
     );
   };
@@ -51,6 +73,12 @@ const TodoList = () => {
         keyExtractor={(item) => item.id}
         renderItem={renderItem}
       />
+      <View>
+      <TouchableOpacity
+        onPress={() => { cleanList(); logout(); openAuth() }}>
+        <Text style={{fontSize: 20}}>Выйти из учетной записи</Text> 
+      </TouchableOpacity>
+      </View>
     </View>
   );
 };

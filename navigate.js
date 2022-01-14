@@ -4,7 +4,7 @@ import Notes from './src/Notes';
 import Registration from './src/Registration';
 
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { createDrawerNavigator } from "@react-navigation/drawer"
+// import { createDrawerNavigator } from "@react-navigation/drawer"
 import { NavigationContainer } from '@react-navigation/native';
 
 const Stack = createNativeStackNavigator()
@@ -28,22 +28,22 @@ const Navigate = () => {
     )
 }
 
-const Drawer = createDrawerNavigator();
+// const Drawer = createDrawerNavigator();
 
-const DrawerNavigation = () => {
-    return(
-        // Ломается
+// const DrawerNavigation = () => {
+//     return(
+//         // Ломается
 
-        <Drawer.Navigator initialRouteName="Продолжить">
-            <Drawer.Screen name="Выйти" component={Auth} options={{headerShown: false}}/>
-            <Drawer.Screen name="Продолжить" component={Navigate} options={{headerShown: false}}/> 
-        </Drawer.Navigator>
-    )
-}
+//         <Drawer.Navigator initialRouteName="Продолжить">
+//             <Drawer.Screen name="Выйти" component={Auth} options={{headerShown: false}}/>
+//             <Drawer.Screen name="Продолжить" component={Navigate} options={{headerShown: false}}/> 
+//         </Drawer.Navigator>
+//     )
+// }
 
 export default () => (
      <NavigationContainer>
      {/* Для выставления навигации как ранее <Navigate/> вместо нижней строчки*/}
-        <DrawerNavigation />
+        <Navigate />
      </NavigationContainer>
 );

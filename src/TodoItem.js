@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Text, TouchableOpacity, View, TextInput } from "react-native";
 import { styles } from "./styles/TodoListStyles";
 import CheckBox from "@react-native-community/checkbox";
@@ -18,14 +18,13 @@ const TodoItem = ({ item, deleteNote }) => {
         <TextInput
           style={styles.textBlock}
           value={text}
-          onChangeText={onChangeText}
+          onChangeText={(text) => onChangeText(text)}
           placeholder={item.title}
         />
       </View>
       <TouchableOpacity
         style={styles.buttonDel}
-        onPress={() => deleteNote(item.id)}
-      >
+        onPress={() => deleteNote(item.id)}>
         <Text style={styles.del}>X</Text>
       </TouchableOpacity>
     </View>

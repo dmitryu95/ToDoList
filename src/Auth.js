@@ -1,36 +1,26 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, TextInput, TouchableOpacity, Button, Alert } from 'react-native';
 import { Network } from './source/Network';
 import { styles } from "./styles/AuthStyles"
 
 export default function Auth({ navigation }) {
     // БЛОК НАВИГАЦИИ
-    const openNotes = () => { navigation.navigate('Notes') }
+    const openNotes = (response) => ( navigation.navigate('Notes', {idUser: response.id }) )
     const openRegistration = () => { navigation.navigate('Registration') }
 
     // БЛОК СОСТОЯНИЙ
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [userId, setUserId] = useState('');
-
-    // БЛОК С ПОЛУЧЕНИЕМ ТОКЕНА
-    /*const storeToken = async (token) => {
-        try{
-            await AsyncStorage.setItem('token', token)
-        } catch (e) { alert('cant save token') }
-
-    }*/
 
     const ButtonAccept = (email, password) => {
         if (email && password !== "") {
             try {
-                Network("Users/login", "POST", {email, password})
+                Network("Users/login",'', "POST", {email, password})
                 .then( response => {
-                    (response.id)
-                    ? (Alert.alert("",`Пользователь авторизован`),
-                      setUserId(response.id),
-                      openNotes())
-                    : Alert.alert("",`Ошибка, возможно пользователь не существует `)})
+                    if(response.id) {
+                        Alert.alert("",`Пользователь авторизован`)
+                        return openNotes(response) 
+                    } else  return Alert.alert("",`Ошибка, возможно пользователь не существует `)})
             } catch(error) {
                 console.log("error", error)
             }
@@ -38,6 +28,7 @@ export default function Auth({ navigation }) {
         setEmail('')
         setPassword('')
     }
+
 
     return (
         <View style={styles.main}>
@@ -50,7 +41,7 @@ export default function Auth({ navigation }) {
                         value={email}
                         onChangeText={setEmail} 
                         placeholder='Введите логин...'>
-                        </TextInput>
+                    </TextInput>
                 </View>
                 <View style={styles.loginPass}>
                     <Text style={styles.text}>Пароль:</Text>

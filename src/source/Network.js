@@ -2,24 +2,23 @@ import React, { useState, useEffect } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Alert, View } from "react-native";
 
-const Network = async (url, method, body) => {
-  console.log(url, method, body);
+const Network = async (url,id, method, body) => {
+  console.log(url,id, method, body);
 
-  let token = "";
-  await AsyncStorage.getItem("token").then((value) => { token = value })
-
-  const response = await fetch(`http://10.102.132.128:300/api/${url}`, {
+  // const [result, setResult] = useState()
+  
+  const response = await fetch(`http://10.0.2.2:300/api/${url}${id}`, {
     method: method,
     headers: {
+      Accept: 'application/json',
       "Content-Type": "application/json",
-      access_token: token,
     },
-    body: JSON.stringify( body )
+      body: JSON.stringify( body )
   })
   return response.json();
-};
+}
 
-export {Network};
+export { Network };
 
 
 

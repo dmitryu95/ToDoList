@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/dmitriyu/toDoList/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values/values.xml",
+            "outputFile": "/Users/dmitriyu/toDoList — копия/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values/values.xml",
             "map": [
                 {
                     "source": "/Users/dmitriyu/.gradle/caches/transforms-2/files-2.1/747f53e70e3372703b3570ac3dfbfb03/material-1.1.0/res/values/values.xml",
@@ -61,6 +61,23 @@
                     }
                 },
                 {
+                    "source": "/Users/dmitriyu/toDoList — копия/android/app/src/main/res/values/strings.xml",
+                    "from": {
+                        "startLines": "1",
+                        "startColumns": "4",
+                        "startOffsets": "16",
+                        "endColumns": "45",
+                        "endOffsets": "57"
+                    },
+                    "to": {
+                        "startLines": "671",
+                        "startColumns": "4",
+                        "startOffsets": "43007",
+                        "endColumns": "45",
+                        "endOffsets": "43048"
+                    }
+                },
+                {
                     "source": "/Users/dmitriyu/.gradle/caches/transforms-2/files-2.1/baebfc24ee3e9d675a4614c1f27f118a/jetified-appcompat-resources-1.1.0/res/values/values.xml",
                     "from": {
                         "startLines": "2,29,36,47,74",
@@ -116,23 +133,6 @@
                     }
                 },
                 {
-                    "source": "/Users/dmitriyu/toDoList/android/app/src/main/res/values/strings.xml",
-                    "from": {
-                        "startLines": "1",
-                        "startColumns": "4",
-                        "startOffsets": "16",
-                        "endColumns": "45",
-                        "endOffsets": "57"
-                    },
-                    "to": {
-                        "startLines": "671",
-                        "startColumns": "4",
-                        "startOffsets": "43007",
-                        "endColumns": "45",
-                        "endOffsets": "43048"
-                    }
-                },
-                {
                     "source": "/Users/dmitriyu/.gradle/caches/transforms-2/files-2.1/ae1a1dddf9cea612695d8157e2ff38cd/transition-1.2.0/res/values/values.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11",
@@ -147,25 +147,6 @@
                         "startOffsets": "37236,37276,37669,37851,37906,38790,38844,38896,38945,39006",
                         "endColumns": "39,46,42,54,46,53,51,48,60,49",
                         "endOffsets": "37271,37318,37707,37901,37948,38839,38891,38940,39001,39051"
-                    }
-                },
-                {
-                    "source": "/Users/dmitriyu/toDoList/node_modules/react-native-prompt-android/android/build/intermediates/packaged_res/debug/values/values.xml",
-                    "from": {
-                        "startLines": "2,5",
-                        "startColumns": "4,4",
-                        "startOffsets": "55,213",
-                        "endLines": "4,10",
-                        "endColumns": "12,12",
-                        "endOffsets": "208,532"
-                    },
-                    "to": {
-                        "startLines": "2985,2988",
-                        "startColumns": "4,4",
-                        "startOffsets": "201175,201333",
-                        "endLines": "2987,2993",
-                        "endColumns": "12,12",
-                        "endOffsets": "201328,201652"
                     }
                 },
                 {
@@ -185,23 +166,6 @@
                         "endLines": "7312",
                         "endColumns": "24",
                         "endOffsets": "451740"
-                    }
-                },
-                {
-                    "source": "/Users/dmitriyu/toDoList/android/app/build/generated/res/resValues/debug/values/gradleResValues.xml",
-                    "from": {
-                        "startLines": "6,8",
-                        "startColumns": "4,4",
-                        "startOffsets": "156,262",
-                        "endColumns": "63,68",
-                        "endOffsets": "215,326"
-                    },
-                    "to": {
-                        "startLines": "635,636",
-                        "startColumns": "4,4",
-                        "startOffsets": "40488,40552",
-                        "endColumns": "63,68",
-                        "endOffsets": "40547,40616"
                     }
                 },
                 {
@@ -262,6 +226,61 @@
                     }
                 },
                 {
+                    "source": "/Users/dmitriyu/toDoList — копия/android/app/src/main/res/values/styles.xml",
+                    "from": {
+                        "startLines": "3",
+                        "startColumns": "4",
+                        "startOffsets": "54",
+                        "endLines": "6",
+                        "endColumns": "12",
+                        "endOffsets": "234"
+                    },
+                    "to": {
+                        "startLines": "802",
+                        "startColumns": "4",
+                        "startOffsets": "58565",
+                        "endLines": "805",
+                        "endColumns": "12",
+                        "endOffsets": "58745"
+                    }
+                },
+                {
+                    "source": "/Users/dmitriyu/toDoList — копия/node_modules/react-native-prompt-android/android/build/intermediates/packaged_res/debug/values/values.xml",
+                    "from": {
+                        "startLines": "2,5",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,213",
+                        "endLines": "4,10",
+                        "endColumns": "12,12",
+                        "endOffsets": "208,532"
+                    },
+                    "to": {
+                        "startLines": "2985,2988",
+                        "startColumns": "4,4",
+                        "startOffsets": "201175,201333",
+                        "endLines": "2987,2993",
+                        "endColumns": "12,12",
+                        "endOffsets": "201328,201652"
+                    }
+                },
+                {
+                    "source": "/Users/dmitriyu/toDoList — копия/android/app/build/generated/res/resValues/debug/values/gradleResValues.xml",
+                    "from": {
+                        "startLines": "6,8",
+                        "startColumns": "4,4",
+                        "startOffsets": "156,262",
+                        "endColumns": "63,68",
+                        "endOffsets": "215,326"
+                    },
+                    "to": {
+                        "startLines": "635,636",
+                        "startColumns": "4,4",
+                        "startOffsets": "40488,40552",
+                        "endColumns": "63,68",
+                        "endOffsets": "40547,40616"
+                    }
+                },
+                {
                     "source": "/Users/dmitriyu/.gradle/caches/transforms-2/files-2.1/dcc76cd07ebcaa6166d73d461b1667fa/cardview-1.0.0/res/values/values.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,35,36,37,38,45,47,50,7",
@@ -297,25 +316,6 @@
                         "endLines": "56,339,340,341,349,350,351,577,6546",
                         "endColumns": "55,58,47,55,74,75,71,65,24",
                         "endOffsets": "3241,22091,22139,22195,22881,22957,23029,37418,410427"
-                    }
-                },
-                {
-                    "source": "/Users/dmitriyu/toDoList/android/app/src/main/res/values/styles.xml",
-                    "from": {
-                        "startLines": "3",
-                        "startColumns": "4",
-                        "startOffsets": "54",
-                        "endLines": "6",
-                        "endColumns": "12",
-                        "endOffsets": "234"
-                    },
-                    "to": {
-                        "startLines": "802",
-                        "startColumns": "4",
-                        "startOffsets": "58565",
-                        "endLines": "805",
-                        "endColumns": "12",
-                        "endOffsets": "58745"
                     }
                 }
             ]
